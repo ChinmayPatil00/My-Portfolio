@@ -1,0 +1,27 @@
+:root {
+  --bg-color: #111111;
+  --card-bg: #1A1A1A;
+  --card-border: #2D2D2D;
+  --text-color: #FFFFFF;
+  --text-secondary: #9CA3AF;
+  --accent-color: #22c55e;
+  --accent-hover: #16a34a;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
