@@ -54,7 +54,7 @@ function Contact() {
   };
 
   return (
-    <div className="contact-section" id="contact">
+    <section className="contact-section" id="contact">
       <form className="contact-form" onSubmit={handleSubmit}>
         
         <h2>Contact Me</h2>
@@ -86,7 +86,7 @@ function Contact() {
           required
         />
 
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading} className="btn btn-primary" style={{width: '100%', justifyContent: 'center'}}>
           {loading ? "Sending..." : "Send Message"}
         </button>
 
@@ -97,7 +97,7 @@ function Contact() {
         )}
 
       </form>
-    </div>
+    </section>
   );
 }
 
