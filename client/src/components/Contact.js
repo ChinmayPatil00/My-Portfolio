@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { FaPaperPlane } from "react-icons/fa";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -9,54 +7,58 @@ function Contact() {
     message: "",
   });
 
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setSuccess(false);
 
     try {
-      // In production, we'd use the full URL. In development, the proxy handles it.
-      const url = process.env.REACT_APP_API_URL || '/api/contact';
-
-      const response = await fetch(url, {
+      const res = await fetch("http://localhost:5000/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        alert("Message sent successfully!");
-        setFormData({ name: "", email: "", message: "" });
+      const data = await res.json();
+
+      if (res.ok) {
+        setSuccess(true);
+
+        // Clear form
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
       } else {
-        alert("Failed to send message.");
+        alert(data.message || "Error sending message ❌");
       }
     } catch (error) {
       console.error(error);
-      alert("Error sending message.");
+      alert("Error sending message ❌");
     }
+
+    setLoading(false);
   };
 
   return (
-    <section id="contact">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
-        Contact Me
-      </motion.h2>
+    <div className="contact-section" id="contact">
+      <form className="contact-form" onSubmit={handleSubmit}>
+        
+        <h2>Contact Me</h2>
 
-      <motion.form 
-        className="contact-form solid-card" 
-        onSubmit={handleSubmit}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
         <input
           type="text"
           name="name"
@@ -65,6 +67,7 @@ function Contact() {
           onChange={handleChange}
           required
         />
+
         <input
           type="email"
           name="email"
@@ -73,6 +76,7 @@ function Contact() {
           onChange={handleChange}
           required
         />
+
         <textarea
           name="message"
           placeholder="Your Message"
@@ -80,12 +84,20 @@ function Contact() {
           value={formData.message}
           onChange={handleChange}
           required
-        ></textarea>
-        <button type="submit" className="btn btn-primary" style={{alignSelf: 'flex-start', marginTop: '10px'}}>
-          <FaPaperPlane /> Send Message
+        />
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Sending..." : "Send Message"}
         </button>
-      </motion.form>
-    </section>
+
+        {success && (
+          <p style={{ textAlign: "center", color: "#00ff88", marginTop: "10px" }}>
+            Message sent successfully ✅
+          </p>
+        )}
+
+      </form>
+    </div>
   );
 }
 
