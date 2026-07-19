@@ -55,9 +55,9 @@ function Contact() {
 
   return (
     <section className="contact-section" id="contact">
-      <form className="contact-form" onSubmit={handleSubmit}>
-        
-        <h2>Contact Me</h2>
+      <h2>Contact Me</h2>
+      
+      <form className="contact-form solid-card" onSubmit={handleSubmit}>
 
         <input
           type="text"
