@@ -7,7 +7,7 @@ function Projects() {
       name: "CreatorFlow",
       desc: "An operational dashboard for digital creators featuring a Kanban scheduling board and an AI-integrated Rich Text Editor to automate content pipelines.",
       github: "https://github.com/ChinmayPatil00/CreatorFlow",
-      live: ""
+      live: "https://creator-flow-xi.vercel.app"
     },
     {
       name: "TalentMatrix AI",
