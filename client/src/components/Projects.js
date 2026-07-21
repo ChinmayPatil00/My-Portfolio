@@ -4,6 +4,12 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 function Projects() {
   const featuredProjects = [
     {
+      name: "CreatorFlow",
+      desc: "An operational dashboard for digital creators featuring a Kanban scheduling board and an AI-integrated Rich Text Editor to automate content pipelines.",
+      github: "https://github.com/ChinmayPatil00/CreatorFlow",
+      live: ""
+    },
+    {
       name: "TalentMatrix AI",
       desc: "An AI-powered app that parses PDF resumes using the Gemini API to instantly generate skill gaps and a 3-month career roadmap.",
       github: "https://github.com/ChinmayPatil00/TalentMatrix-AI",
