@@ -50,7 +50,7 @@ function Certifications() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        Certifications
+        Achievement or Certifications
       </motion.h2>
 
       <div className="grid-2">
