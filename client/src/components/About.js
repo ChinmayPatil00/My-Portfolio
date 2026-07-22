@@ -9,7 +9,7 @@ function About() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        Summary
+        About Me
       </motion.h2>
 
       <motion.div
