@@ -10,7 +10,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: "*"
+  origin: ["https://my-portfolio-theta-sooty-14.vercel.app", "http://localhost:3000", "http://localhost:5173"]
 }));
 app.use(express.json());
 

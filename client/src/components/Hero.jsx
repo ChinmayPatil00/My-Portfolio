@@ -24,7 +24,7 @@ function Hero() {
           <a href="#contact" className="btn btn-primary">
             <FaEnvelope /> Contact Me
           </a>
-          <a href="/resume.pdf" download className="btn btn-secondary">
+          <a href="/Chinmay_Patil_Resume.pdf" download className="btn btn-secondary">
             <FaFileDownload /> Download Resume
           </a>
         </div>
