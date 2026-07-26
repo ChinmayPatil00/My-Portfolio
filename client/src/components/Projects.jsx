@@ -10,16 +10,16 @@ function Projects() {
       live: "https://creator-flow-xi.vercel.app"
     },
     {
-      name: "TalentMatrix AI",
-      desc: "An AI-powered app that parses PDF resumes using the Gemini API to instantly generate skill gaps and a 3-month career roadmap.",
-      github: "https://github.com/ChinmayPatil00/TalentMatrix-AI",
-      live: "https://talentmatrix-ai.vercel.app"
-    },
-    {
       name: "HoneyBot",
       desc: "A decoupled, cloud-based threat intelligence system that uses a decoy SSH server to intercept cyberattacks, capture malicious credentials, and visualize hacker origins in real-time on a global map.",
       github: "https://github.com/ChinmayPatil00/HoneyBot",
       live: "https://honey-pot-taupe.vercel.app"
+    },
+    {
+      name: "TalentMatrix AI",
+      desc: "An AI-powered app that parses PDF resumes using the Gemini API to instantly generate skill gaps and a 3-month career roadmap.",
+      github: "https://github.com/ChinmayPatil00/TalentMatrix-AI",
+      live: "https://talentmatrix-ai.vercel.app"
     }
   ];
 
