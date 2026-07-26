@@ -4,8 +4,8 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 function Projects() {
   const featuredProjects = [
     {
-      name: "CreatorFlow",
-      desc: "An operational dashboard for digital creators featuring a Kanban scheduling board and an AI-integrated Rich Text Editor to automate content pipelines.",
+      name: "Auction Engine",
+      desc: "A real-time auction engine built on the MERN stack featuring live bidding, secure user authentication, and a responsive frontend.",
       github: "https://github.com/ChinmayPatil00/CreatorFlow",
       live: "https://creator-flow-xi.vercel.app"
     },
