@@ -5,7 +5,7 @@ function Projects() {
   const featuredProjects = [
     {
       name: "Auction Engine",
-      desc: "A real-time auction engine built on the MERN stack featuring live bidding, secure user authentication, and a responsive frontend.",
+      desc: "Real-time MERN marketplace for creators featuring zero-latency WebSockets, AI automation, and a secure transaction ledger.",
       github: "https://github.com/ChinmayPatil00/CreatorFlow",
       live: "https://creator-flow-xi.vercel.app"
     },
