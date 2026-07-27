@@ -25,7 +25,7 @@ function Projects() {
       name: "CyberDash",
       desc: "A comprehensive cybersecurity dashboard showcasing network analytics, threat intelligence feeds, and real-time security alerts.",
       github: "https://github.com/ChinmayPatil00/CyberDash",
-      live: ""
+      live: "https://music-palyer-woad.vercel.app"
     }
   ];
 
