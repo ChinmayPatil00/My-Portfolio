@@ -4,6 +4,12 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 function Projects() {
   const featuredProjects = [
     {
+      name: "CyberDash",
+      desc: "A comprehensive cybersecurity dashboard showcasing network analytics, threat intelligence feeds, and real-time security alerts.",
+      github: "https://github.com/ChinmayPatil00/CyberDash",
+      live: ""
+    },
+    {
       name: "Auction Engine",
       desc: "Real-time MERN marketplace for creators featuring zero-latency WebSockets, AI automation, and a secure transaction ledger.",
       github: "https://github.com/ChinmayPatil00/CreatorFlow",
