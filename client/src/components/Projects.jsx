@@ -10,6 +10,11 @@ function Projects() {
       live: "https://creator-flow-xi.vercel.app"
     },
     {
+      name: "NexusATS",
+      desc: "A job aggregator and Applicant Tracking System (ATS) designed to streamline the hiring and application process.",
+      github: "https://github.com/ChinmayPatil00/NexusAts"
+    },
+    {
       name: "HoneyBot",
       desc: "A decoupled, cloud-based threat intelligence system that uses a decoy SSH server to intercept cyberattacks, capture malicious credentials, and visualize hacker origins in real-time on a global map.",
       github: "https://github.com/ChinmayPatil00/HoneyBot",
@@ -26,11 +31,6 @@ function Projects() {
       desc: "A comprehensive cybersecurity dashboard showcasing network analytics, threat intelligence feeds, and real-time security alerts.",
       github: "https://github.com/ChinmayPatil00/CyberDash",
       live: "https://cyber-dash-two.vercel.app"
-    },
-    {
-      name: "NexusATS",
-      desc: "A job aggregator and Applicant Tracking System (ATS) designed to streamline the hiring and application process.",
-      github: "https://github.com/ChinmayPatil00/NexusAts"
     }
   ];
 
