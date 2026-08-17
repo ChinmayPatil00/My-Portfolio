@@ -12,7 +12,8 @@ function Projects() {
     {
       name: "NexusATS",
       desc: "A job aggregator and Applicant Tracking System (ATS) designed to streamline the hiring and application process.",
-      github: "https://github.com/ChinmayPatil00/NexusAts"
+      github: "https://github.com/ChinmayPatil00/NexusAts",
+      live: "https://nexus-ats-beige.vercel.app/"
     },
     {
       name: "HoneyBot",
