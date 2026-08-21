@@ -2,7 +2,7 @@
 
 Welcome to the repository of my personal portfolio website! This project is a fully responsive, modern web application built using the MERN stack to showcase my skills, professional experience, projects, and certifications.
 
-**🔗 Live Demo:** [https://my-portfolio-theta-sooty-14.vercel.app](https://my-portfolio-theta-sooty-14.vercel.app)
+**🔗 Live Demo:** [https://my-portfolio-413v.vercel.app](https://my-portfolio-413v.vercel.app)
 
 ## 🚀 Features
 
