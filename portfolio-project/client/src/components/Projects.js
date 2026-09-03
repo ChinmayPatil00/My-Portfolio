@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 function Projects() {
   const projects = [
@@ -10,9 +10,28 @@ function Projects() {
       demo: "https://auction-engine-omega.vercel.app/"
     },
     {
-      name: "Portfolio Website",
-      desc: "Full-stack MERN portfolio with dynamic content and email integration.",
-      github: "https://github.com/ChinmayPatil00/My-Portfolio-Website"
+      name: "NexusATS",
+      desc: "A job aggregator and Applicant Tracking System (ATS) designed to streamline the hiring and application process.",
+      github: "#",
+      demo: "#"
+    },
+    {
+      name: "HoneyBot",
+      desc: "A decoupled, cloud-based threat intelligence system that uses a decoy SSH server to intercept cyberattacks, capture malicious credentials, and visualize hacker origins in real-time on a global map.",
+      github: "#",
+      demo: "#"
+    },
+    {
+      name: "TalentMatrix AI",
+      desc: "An AI-powered app that parses PDF resumes using the Gemini API to instantly generate skill gaps and a 3-month career roadmap.",
+      github: "#",
+      demo: "#"
+    },
+    {
+      name: "CyberDash",
+      desc: "A comprehensive cybersecurity dashboard showcasing network analytics, threat intelligence feeds, and real-time security alerts.",
+      github: "#",
+      demo: "#"
     }
   ];
 
@@ -41,12 +60,12 @@ function Projects() {
             <h3 style={{color: '#fff', marginBottom: '10px'}}>{p.name}</h3>
             <p style={{flexGrow: 1}}>{p.desc}</p>
             <div style={{marginTop: '20px', display: 'flex', gap: '15px'}}>
-              <a href={p.github} target="_blank" rel="noreferrer" className="card-link">
-                <FaGithub /> View Code
+              <a href={p.github} target="_blank" rel="noreferrer" className="card-link" style={{color: 'var(--accent-color)', display: 'flex', alignItems: 'center', gap: '5px', textDecoration: 'none'}}>
+                <FaGithub /> Code
               </a>
               {p.demo && (
-                <a href={p.demo} target="_blank" rel="noreferrer" className="card-link">
-                  Live Demo
+                <a href={p.demo} target="_blank" rel="noreferrer" className="card-link" style={{color: 'var(--accent-color)', display: 'flex', alignItems: 'center', gap: '5px', textDecoration: 'none'}}>
+                  <FaExternalLinkAlt /> Live Demo
                 </a>
               )}
             </div>
