@@ -7,7 +7,7 @@ function Projects() {
       name: "Auction Engine",
       desc: "Real-time MERN marketplace for creators featuring zero-latency WebSockets, AI automation, and a secure transaction ledger.",
       github: "https://github.com/ChinmayPatil00/CreatorFlow",
-      demo: "https://auction-engine-app.vercel.app/"
+      demo: "https://auction-engine-omega.vercel.app/"
     },
     {
       name: "Portfolio Website",
