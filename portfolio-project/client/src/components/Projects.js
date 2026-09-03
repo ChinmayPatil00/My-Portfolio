@@ -64,7 +64,7 @@ function Projects() {
                 <FaGithub /> Code
               </a>
               {p.demo && (
-                <a href={p.demo} target="_blank" rel="noreferrer" className="card-link" style={{color: 'var(--accent-color)', display: 'flex', alignItems: 'center', gap: '5px', textDecoration: 'none'}}>
+                <a href={p.demo} onClick={(e) => { if(p.demo === "#") { e.preventDefault(); alert("Live Demo link coming soon!"); } }} target="_blank" rel="noreferrer" className="card-link" style={{color: 'var(--accent-color)', display: 'flex', alignItems: 'center', gap: '5px', textDecoration: 'none'}}>
                   <FaExternalLinkAlt /> Live Demo
                 </a>
               )}

@@ -31,7 +31,7 @@ function Certifications() {
               </div>
             </div>
             <p style={{marginBottom: '15px', color: '#aaa', fontSize: '0.9rem'}}>{cert.date}</p>
-            <a href={cert.link} target="_blank" rel="noopener noreferrer" className="card-link" style={{color: 'var(--accent-color)', fontWeight: 'bold', textDecoration: 'none'}}>
+            <a href={cert.link} onClick={(e) => { if(cert.link === "#") { e.preventDefault(); alert("Credential link coming soon!"); } }} target="_blank" rel="noopener noreferrer" className="card-link" style={{color: 'var(--accent-color)', fontWeight: 'bold', textDecoration: 'none'}}>
               View Credential
             </a>
           </motion.div>
