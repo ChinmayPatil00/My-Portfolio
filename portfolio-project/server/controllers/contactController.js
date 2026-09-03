@@ -51,6 +51,4 @@ Message: ${message}
     });
   }
 };
-
-console.log("EMAIL:", process.env.EMAIL_USER);
-console.log("PASS:", process.env.EMAIL_PASS);
+

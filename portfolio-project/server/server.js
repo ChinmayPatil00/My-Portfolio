@@ -2,8 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-console.log("EMAIL:", process.env.EMAIL);
-console.log("PASS:", process.env.PASS);
+
 
 const contactRoutes = require("./routes/contactRoutes");
 
