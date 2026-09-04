@@ -14,26 +14,52 @@ function Certifications() {
 
   return (
     <section id="certifications">
-      <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} style={{color: 'var(--accent-color)'}}>
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }} 
+        whileInView={{ opacity: 1, y: 0 }} 
+        viewport={{ once: true, amount: 0.3 }} 
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} 
+        style={{ color: 'var(--accent-color)' }}
+      >
         Achievements
       </motion.h2>
 
       <div className="grid-3">
         {certs.map((cert, index) => (
-          <motion.div key={index} className="certification-item solid-card" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }}>
-            <div style={{display: 'flex', alignItems: 'flex-start', gap: '15px', marginBottom: '15px'}}>
-              <div style={{background: 'var(--accent-color)', padding: '15px', borderRadius: '12px', color: '#111', fontSize: '1.5rem'}}>
+          <motion.div 
+            key={index} 
+            className="certification-item solid-card" 
+            initial={{ opacity: 0, y: 25 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true, amount: 0.2 }} 
+            transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="certification-header">
+              <div className="certification-badge">
                 <FaCertificate />
               </div>
-              <div>
-                <h3 style={{color: '#fff', fontSize: '1.1rem', marginBottom: '5px'}}>{cert.title}</h3>
-                <p style={{color: 'var(--accent-color)', fontWeight: '500', fontSize: '0.9rem'}}>{cert.issuer}</p>
+              <div className="certification-info">
+                <h3 className="certification-title">{cert.title}</h3>
+                <p className="certification-issuer">{cert.issuer}</p>
               </div>
             </div>
-            <p style={{marginBottom: '15px', color: '#aaa', fontSize: '0.9rem'}}>{cert.date}</p>
-            <a href={cert.link} onClick={(e) => { if(cert.link === "#") { e.preventDefault(); alert("Credential link coming soon!"); } }} target="_blank" rel="noopener noreferrer" className="card-link" style={{color: 'var(--accent-color)', fontWeight: 'bold', textDecoration: 'none'}}>
-              View Credential
-            </a>
+            <div className="certification-bottom">
+              <p className="certification-date">{cert.date}</p>
+              <a 
+                href={cert.link} 
+                onClick={(e) => { 
+                  if(cert.link === "#") { 
+                    e.preventDefault(); 
+                    alert("Credential link coming soon!"); 
+                  } 
+                }} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="card-link"
+              >
+                View Credential
+              </a>
+            </div>
           </motion.div>
         ))}
       </div>

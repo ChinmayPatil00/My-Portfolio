@@ -12,6 +12,7 @@ section h2 {
   margin-bottom: 30px;
   text-align: center;
   color: var(--accent-color);
+  font-weight: 700;
 }
 
 p {
@@ -25,15 +26,18 @@ p {
 .solid-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 25px;
-  transition: all 0.3s ease;
+  border-radius: 16px;
+  padding: 28px;
+  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+              border-color 0.3s ease,
+              box-shadow 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+              background-color 0.3s ease;
 }
 
 .solid-card:hover {
   transform: translateY(-5px);
   border-color: var(--accent-color);
-  box-shadow: 0 10px 30px -10px rgba(34, 197, 94, 0.2);
+  box-shadow: 0 12px 30px -10px rgba(34, 197, 94, 0.22);
 }
 
 /* ==============================
@@ -43,12 +47,16 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 20px;
-  border-radius: 6px;
+  padding: 11px 22px;
+  border-radius: 8px;
   font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+              background-color 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+              color 0.25s ease;
   cursor: pointer;
   border: none;
 }
@@ -60,7 +68,8 @@ p {
 
 .btn-primary:hover {
   background: var(--accent-hover);
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.35);
 }
 
 .btn-secondary {
@@ -70,7 +79,9 @@ p {
 }
 
 .btn-secondary:hover {
-  background: rgba(34, 197, 94, 0.1);
+  background: rgba(34, 197, 94, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.15);
 }
 
 /* ==============================
@@ -97,7 +108,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 100px 20px 40px; /* Reduced from 150px and removed min-height 100vh */
+  padding: 40px 20px;
   flex-wrap: wrap;
   gap: 40px;
 }
@@ -132,7 +143,8 @@ p {
 .hero-img-container {
   flex: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   min-width: 300px;
 }
 
@@ -141,55 +153,54 @@ p {
   height: 300px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 15%;
   border: 4px solid var(--card-border);
-  transition: 0.3s;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .hero-img:hover {
   border-color: var(--accent-color);
   box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
+  transform: scale(1.02);
 }
 
 /* Navbar */
 .navbar-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  z-index: 1000;
-  background: var(--bg-color);
+  background: var(--card-bg);
   border-bottom: 1px solid var(--card-border);
-  transition: all 0.3s ease;
+  z-index: 100;
 }
 
 .navbar {
-  width: 100%;
-  max-width: 1100px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 20px 20px;
-}
-
-.navbar.scrolled {
-  padding: 15px 20px;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 30px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 25px;
+  gap: 22px;
 }
 
 .nav-links a {
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 500;
-  transition: 0.3s;
+  transition: color 0.25s ease;
+  position: relative;
+  padding: 4px 0;
 }
 
 .nav-links a:hover {
@@ -204,13 +215,164 @@ p {
 .nav-socials a {
   color: var(--text-secondary);
   font-size: 1.2rem;
-  transition: 0.3s;
+  transition: color 0.25s ease, transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: flex;
   align-items: center;
 }
 
 .nav-socials a:hover {
   color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* ==============================
+   ABOUT
+============================== */
+.about-container {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.about-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px 28px;
+}
+
+.about-card p {
+  color: #d1d5db;
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+/* ==============================
+   EXPERIENCE
+============================== */
+.experience-container {
+  max-width: 620px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.experience-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px 28px;
+  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+              border-color 0.3s ease,
+              box-shadow 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-color);
+  box-shadow: 0 12px 30px -10px rgba(34, 197, 94, 0.25);
+}
+
+.experience-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.experience-icon-badge {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  background-color: var(--accent-color);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.experience-icon {
+  font-size: 1.45rem;
+  color: #0b0f14;
+}
+
+.experience-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.experience-role {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.experience-company {
+  color: #38bdf8;
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.experience-period {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 18px 0 16px;
+  font-weight: 400;
+}
+
+.experience-points {
+  list-style-type: disc;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.experience-points li {
+  color: #cbd5e1;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+/* ==============================
+   EDUCATION
+============================== */
+.education-container {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.education-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.education-institute {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.education-degree {
+  color: #38bdf8;
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.education-period {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 4px 0 0 0;
+  font-weight: 400;
 }
 
 /* Skills */
@@ -225,20 +387,23 @@ p {
 .skill-pill {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 10px 20px;
+  border-radius: 30px;
   color: var(--text-color);
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 8px;
-  transition: 0.3s;
+  gap: 10px;
+  transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+              border-color 0.25s ease,
+              background-color 0.25s ease,
+              box-shadow 0.25s ease;
 }
 
 .skill-pill:hover {
   border-color: var(--accent-color);
-  color: var(--accent-color);
   transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(34, 197, 94, 0.2);
 }
 
 /* Projects & Certifications Links */
@@ -250,64 +415,161 @@ p {
   color: var(--accent-color);
   text-decoration: none;
   font-weight: 600;
+  transition: color 0.25s ease, transform 0.25s ease;
 }
 
 .card-link:hover {
-  text-decoration: underline;
+  color: var(--accent-hover);
+  transform: translateX(3px);
 }
 
-/* Contact Form */
+/* Achievements / Certifications */
+.certification-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.certification-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.certification-badge {
+  background: var(--accent-color);
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 12px;
+  color: #111;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+}
+
+.certification-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.certification-title {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.certification-issuer {
+  color: var(--accent-color);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.certification-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.certification-date {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.certification-bottom .card-link {
+  margin-top: 0;
+}
+
+/* ==============================
+   CONTACT FORM
+============================== */
 .contact-form {
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px 28px;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 12px;
-  background: var(--bg-color);
+  padding: 14px 16px;
+  background: #111111;
   border: 1px solid var(--card-border);
-  border-radius: 6px;
-  color: #fff;
+  border-radius: 8px;
+  color: #ffffff;
   font-family: inherit;
-  font-size: 1rem;
-  transition: 0.3s;
+  font-size: 0.98rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #71717a;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
   border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
 }
 
-/* Footer */
+.contact-submit-btn {
+  width: 100%;
+  background: var(--accent-color);
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: background-color 0.25s ease, transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.25s ease;
+}
+
+.contact-submit-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.35);
+}
+
+.contact-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* ==============================
+   FOOTER
+============================== */
 .footer {
   text-align: center;
-  padding: 30px 20px;
-  border-top: 1px solid var(--card-border);
+  padding: 40px 20px 50px;
   margin-top: 40px;
   background: var(--bg-color);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.footer-socials {
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.footer-socials a {
+.footer-text {
   color: var(--text-secondary);
-  font-size: 1.5rem;
-  transition: 0.3s;
-}
-
-.footer-socials a:hover {
-  color: var(--accent-color);
+  font-size: 0.95rem;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 /* Responsive */
@@ -315,7 +577,7 @@ p {
   .hero {
     flex-direction: column;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 20px;
   }
   .hero-buttons {
     justify-content: center;
@@ -328,5 +590,31 @@ p {
   }
   section h2 {
     font-size: 2rem;
+  }
+  .about-card,
+  .experience-card,
+  .education-card,
+  .contact-form {
+    padding: 22px 20px;
+  }
+  .experience-header {
+    gap: 14px;
+  }
+  .experience-icon-badge {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    border-radius: 12px;
+  }
+  .experience-icon {
+    font-size: 1.25rem;
+  }
+  .experience-role,
+  .education-institute {
+    font-size: 1.12rem;
+  }
+  .experience-company,
+  .education-degree {
+    font-size: 0.95rem;
   }
 }

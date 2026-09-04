@@ -21,21 +21,40 @@ function Skills() {
 
   return (
     <section id="skills">
-      <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} style={{color: 'var(--accent-color)'}}>
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }} 
+        whileInView={{ opacity: 1, y: 0 }} 
+        viewport={{ once: true, amount: 0.3 }} 
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} 
+        style={{ color: 'var(--accent-color)' }}
+      >
         Skills
       </motion.h2>
 
-      <div className="skills-list" style={{display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center', marginBottom: '30px'}}>
+      <div className="skills-list">
         {skills.map((skill, i) => (
-          <motion.div className="skill-pill" key={i} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: i * 0.05 }} whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.1)', borderColor: 'rgba(255, 255, 255, 0.2)' }} style={{display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 20px', borderRadius: '30px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)'}}>
+          <motion.div 
+            className="skill-pill" 
+            key={i} 
+            initial={{ opacity: 0, scale: 0.85 }} 
+            whileInView={{ opacity: 1, scale: 1 }} 
+            viewport={{ once: true }} 
+            transition={{ duration: 0.4, delay: i * 0.035, ease: [0.22, 1, 0.36, 1] }}
+          >
             {skill.icon}
-            <span style={{color: '#fff'}}>{skill.name}</span>
+            <span>{skill.name}</span>
           </motion.div>
         ))}
       </div>
       
-      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.5 }} style={{textAlign: 'center', color: '#aaa', marginTop: '20px'}}>
-        <p><strong style={{color: '#fff'}}>Currently Exploring:</strong> TypeScript, Next.js, Docker, and Vector Databases (RAG)</p>
+      <motion.div 
+        initial={{ opacity: 0, y: 15 }} 
+        whileInView={{ opacity: 1, y: 0 }} 
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }} 
+        style={{ textAlign: 'center', color: '#aaa', marginTop: '25px' }}
+      >
+        <p><strong style={{ color: '#fff' }}>Currently Exploring:</strong> TypeScript, Next.js, Docker, and Vector Databases (RAG)</p>
       </motion.div>
     </section>
   );

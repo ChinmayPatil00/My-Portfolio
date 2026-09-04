@@ -6,8 +6,7 @@ function Projects() {
     {
       name: "Auction Engine",
       desc: "Real-time MERN marketplace for creators featuring zero-latency WebSockets, AI automation, and a secure transaction ledger.",
-      github: "https://github.com/ChinmayPatil00/CreatorFlow",
-      demo: "https://auction-engine-omega.vercel.app/"
+      github: "https://github.com/ChinmayPatil00/CreatorFlow"
     },
     {
       name: "NexusATS",
@@ -40,8 +39,8 @@ function Projects() {
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         Projects
       </motion.h2>
@@ -51,15 +50,15 @@ function Projects() {
           <motion.div 
             className="project-card solid-card" 
             key={i}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             style={{display: 'flex', flexDirection: 'column'}}
           >
             <h3 style={{color: '#fff', marginBottom: '10px'}}>{p.name}</h3>
             <p style={{flexGrow: 1}}>{p.desc}</p>
-            <div style={{marginTop: '20px', display: 'flex', gap: '15px'}}>
+            <div style={{marginTop: 'auto', paddingTop: '20px', display: 'flex', gap: '15px'}}>
               <a href={p.github} target="_blank" rel="noreferrer" className="card-link" style={{color: 'var(--accent-color)', display: 'flex', alignItems: 'center', gap: '5px', textDecoration: 'none'}}>
                 <FaGithub /> Code
               </a>

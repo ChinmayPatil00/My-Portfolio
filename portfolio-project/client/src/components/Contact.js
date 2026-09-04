@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaPaperPlane } from "react-icons/fa";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -17,7 +16,6 @@ function Contact() {
     e.preventDefault();
 
     try {
-      // In production, we'd use the full URL. In development, the proxy handles it.
       const url = process.env.REACT_APP_API_URL || '/api/contact';
 
       const response = await fetch(url, {
@@ -43,8 +41,9 @@ function Contact() {
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        style={{ color: "var(--accent-color)" }}
       >
         Contact Me
       </motion.h2>
@@ -52,10 +51,10 @@ function Contact() {
       <motion.form 
         className="contact-form solid-card" 
         onSubmit={handleSubmit}
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
       >
         <input
           type="text"
@@ -81,8 +80,8 @@ function Contact() {
           onChange={handleChange}
           required
         ></textarea>
-        <button type="submit" className="btn btn-primary" style={{alignSelf: 'flex-start', marginTop: '10px'}}>
-          <FaPaperPlane /> Send Message
+        <button type="submit" className="contact-submit-btn">
+          Send Message
         </button>
       </motion.form>
     </section>

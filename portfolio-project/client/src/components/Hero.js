@@ -7,9 +7,9 @@ function Hero() {
     <section id="home" className="hero">
       <motion.div 
         className="hero-left"
-        initial={{ opacity: 0, x: -50 }}
+        initial={{ opacity: 0, x: -40 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
         <h1>
           Hi, I'm <span>Chinmay Patil</span>
@@ -32,9 +32,9 @@ function Hero() {
 
       <motion.div 
         className="hero-img-container"
-        initial={{ opacity: 0, scale: 0.8 }}
+        initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
         <img src="/profile.jpeg" alt="Chinmay Patil" className="hero-img" />
       </motion.div>
