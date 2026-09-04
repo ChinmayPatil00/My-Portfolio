@@ -16,7 +16,10 @@ function Contact() {
     e.preventDefault();
 
     try {
-      const url = process.env.REACT_APP_API_URL || '/api/contact';
+      const baseUrl = process.env.REACT_APP_API_URL || '';
+      const url = baseUrl
+        ? (baseUrl.endsWith('/api/contact') ? baseUrl : `${baseUrl.replace(/\/$/, '')}/api/contact`)
+        : '/api/contact';
 
       const response = await fetch(url, {
         method: "POST",
