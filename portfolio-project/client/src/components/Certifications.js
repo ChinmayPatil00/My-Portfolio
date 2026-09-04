@@ -4,12 +4,42 @@ import { FaCertificate } from "react-icons/fa";
 
 function Certifications() {
   const certs = [
-    { title: "Generative AI Content Creation", issuer: "Coursera / Adobe", date: "March 2026", link: "#" },
-    { title: "Gen AI 101", issuer: "IT-ITeS SSC Nasscom", date: "March 2026", link: "#" },
-    { title: "Digital Edge 101", issuer: "IT-ITeS SSC Nasscom", date: "March 2026", link: "#" },
-    { title: "Oracle Cloud Infrastructure 2025 Certified Generative AI Professional", issuer: "Oracle", date: "September 2025", link: "#" },
-    { title: "Cybersecurity Analyst Job Simulation", issuer: "Forage", date: "August 2025", link: "#" },
-    { title: "Data Visualisation: Empowering Business with Effective Insights", issuer: "Forage", date: "August 2025", link: "#" }
+    { 
+      title: "Generative AI Content Creation", 
+      issuer: "Coursera / Adobe", 
+      date: "March 2026", 
+      link: "#" 
+    },
+    { 
+      title: "Gen AI 101", 
+      issuer: "IT-ITeS SSC Nasscom", 
+      date: "March 2026", 
+      link: "/certificates/gen-ai-101.pdf" 
+    },
+    { 
+      title: "Digital Edge 101", 
+      issuer: "IT-ITeS SSC Nasscom", 
+      date: "March 2026", 
+      link: "/certificates/digital-edge-101.pdf" 
+    },
+    { 
+      title: "Oracle Cloud Infrastructure 2025 Certified Generative AI Professional", 
+      issuer: "Oracle", 
+      date: "September 2025", 
+      link: "/certificates/oracle-gen-ai.pdf" 
+    },
+    { 
+      title: "Cybersecurity Analyst Job Simulation", 
+      issuer: "Forage", 
+      date: "August 2025", 
+      link: "/certificates/cybersecurity-analyst.pdf" 
+    },
+    { 
+      title: "Data Visualisation: Empowering Business with Effective Insights", 
+      issuer: "Forage", 
+      date: "August 2025", 
+      link: "#" 
+    }
   ];
 
   return (
