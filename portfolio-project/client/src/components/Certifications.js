@@ -8,7 +8,7 @@ function Certifications() {
       title: "Generative AI Content Creation", 
       issuer: "Coursera / Adobe", 
       date: "March 2026", 
-      link: "#" 
+      link: "/certificates/gen-ai-content-creation.pdf" 
     },
     { 
       title: "Gen AI 101", 
@@ -38,7 +38,7 @@ function Certifications() {
       title: "Data Visualisation: Empowering Business with Effective Insights", 
       issuer: "Forage", 
       date: "August 2025", 
-      link: "#" 
+      link: "/certificates/data-visualisation.pdf" 
     }
   ];
 
