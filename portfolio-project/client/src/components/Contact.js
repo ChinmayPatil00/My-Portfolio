@@ -43,26 +43,33 @@ function Contact() {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json().catch(() => ({}));
+      const contentType = response.headers.get("content-type") || "";
+      let data = {};
+      if (contentType.includes("application/json")) {
+        data = await response.json();
+      }
 
-      if (response.ok) {
+      if (response.ok && data.success) {
         setStatus({
           type: "success",
-          message: "✓ Message sent successfully! Thank you for reaching out."
+          message: "✓ Message sent successfully! I will get back to you soon."
         });
         setFormData({ name: "", email: "", message: "" });
         setTimeout(() => setStatus(null), 6000);
       } else {
+        const errorMsg = data.message || (contentType.includes("text/html")
+          ? "Backend is not connected. Please ensure your backend is active and REACT_APP_API_URL is configured."
+          : "Failed to send message. Please try again.");
         setStatus({
           type: "error",
-          message: data.message || "Failed to send message. Please try again."
+          message: errorMsg
         });
       }
     } catch (error) {
-      console.error(error);
+      console.error("Contact submit error:", error);
       setStatus({
         type: "error",
-        message: "Network error. Please check your connection and try again."
+        message: "Network error: Unable to reach backend server. Please verify your connection."
       });
     } finally {
       setIsSubmitting(false);

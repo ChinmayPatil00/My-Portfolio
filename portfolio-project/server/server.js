@@ -18,9 +18,13 @@ app.use(express.json());
 app.use("/api/contact", contactRoutes);
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log("MongoDB Connected ✅"))
-.catch(err => console.log(err));
+if (process.env.MONGO_URI) {
+  mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("MongoDB Connected ✅"))
+    .catch(err => console.error("MongoDB Connection Error ❌:", err.message));
+} else {
+  console.warn("⚠️ MONGO_URI is not set. Messages will be emailed, but not saved to MongoDB.");
+}
 
 app.get("/", (req, res) => {
   res.send("Backend working ✅");
