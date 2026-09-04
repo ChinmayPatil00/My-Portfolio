@@ -3,6 +3,10 @@ const router = express.Router();
 const contactController = require("../controllers/contactController");
 const Contact = require("../models/Contact");
 
+router.get("/ping", (req, res) => {
+  res.status(200).json({ status: "ok", time: Date.now() });
+});
+
 router.post("/", contactController.sendMessage);
 
 router.get("/", async (req, res) => {

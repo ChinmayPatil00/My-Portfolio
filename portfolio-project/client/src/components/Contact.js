@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 function Contact() {
@@ -7,6 +7,20 @@ function Contact() {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState(null);
+
+  // Pre-warm backend when visitor views the portfolio (mitigates cold-start latency)
+  useEffect(() => {
+    const baseUrl = process.env.REACT_APP_API_URL || '';
+    const pingUrl = baseUrl
+      ? (baseUrl.endsWith('/api/contact') ? `${baseUrl}/ping` : `${baseUrl.replace(/\/$/, '')}/api/contact/ping`)
+      : '/api/contact/ping';
+
+    fetch(pingUrl, { mode: 'cors' }).catch(() => {
+      // Quietly ignore network errors during pre-warm
+    });
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,6 +28,8 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setStatus(null);
 
     try {
       const baseUrl = process.env.REACT_APP_API_URL || '';
@@ -27,15 +43,29 @@ function Contact() {
         body: JSON.stringify(formData),
       });
 
+      const data = await response.json().catch(() => ({}));
+
       if (response.ok) {
-        alert("Message sent successfully!");
+        setStatus({
+          type: "success",
+          message: "✓ Message sent successfully! Thank you for reaching out."
+        });
         setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus(null), 6000);
       } else {
-        alert("Failed to send message.");
+        setStatus({
+          type: "error",
+          message: data.message || "Failed to send message. Please try again."
+        });
       }
     } catch (error) {
       console.error(error);
-      alert("Error sending message.");
+      setStatus({
+        type: "error",
+        message: "Network error. Please check your connection and try again."
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -59,6 +89,12 @@ function Contact() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
       >
+        {status && (
+          <div className={`contact-status-msg ${status.type}`}>
+            {status.message}
+          </div>
+        )}
+
         <input
           type="text"
           name="name"
@@ -66,6 +102,7 @@ function Contact() {
           value={formData.name}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
         <input
           type="email"
@@ -74,6 +111,7 @@ function Contact() {
           value={formData.email}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         />
         <textarea
           name="message"
@@ -82,9 +120,14 @@ function Contact() {
           value={formData.message}
           onChange={handleChange}
           required
+          disabled={isSubmitting}
         ></textarea>
-        <button type="submit" className="contact-submit-btn">
-          Send Message
+        <button 
+          type="submit" 
+          className="contact-submit-btn"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Sending..." : "Send Message"}
         </button>
       </motion.form>
     </section>
