@@ -2,11 +2,11 @@ const Contact = require('../models/Contact');
 const nodemailer = require('nodemailer');
 const mongoose = require('mongoose');
 
-// 📧 Reusable pooled transporter
+// 📧 Reusable transporter configured with direct SSL for high cloud reliability
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  pool: true,
-  maxConnections: 3,
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
@@ -19,6 +19,41 @@ transporter.verify().then(() => {
 }).catch(err => {
   console.warn("Nodemailer SMTP verification warning:", err.message);
 });
+
+exports.testMail = async (req, res) => {
+  try {
+    const user = process.env.EMAIL_USER;
+    const pass = process.env.EMAIL_PASS ? `Set (${process.env.EMAIL_PASS.length} chars)` : "NOT SET";
+    const dbName = mongoose.connection ? mongoose.connection.name : "none";
+    const readyState = mongoose.connection ? mongoose.connection.readyState : 0;
+
+    const info = await transporter.sendMail({
+      from: user,
+      to: user,
+      subject: "Portfolio Diagnostic Test Mail",
+      text: "If you are reading this, email sending from Render is 100% operational! 🚀"
+    });
+
+    res.json({
+      success: true,
+      emailUser: user,
+      emailPass: pass,
+      dbName: dbName,
+      readyState: readyState,
+      messageId: info.messageId
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      emailUser: process.env.EMAIL_USER || "NOT SET",
+      emailPass: process.env.EMAIL_PASS ? `Set (${process.env.EMAIL_PASS.length} chars)` : "NOT SET",
+      dbName: mongoose.connection ? mongoose.connection.name : "none",
+      readyState: mongoose.connection ? mongoose.connection.readyState : 0,
+      error: err.message,
+      code: err.code
+    });
+  }
+};
 
 exports.sendMessage = async (req, res) => {
   try {

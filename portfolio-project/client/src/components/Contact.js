@@ -12,7 +12,10 @@ function Contact() {
 
   // Pre-warm backend when visitor views the portfolio (mitigates cold-start latency)
   useEffect(() => {
-    const baseUrl = process.env.REACT_APP_API_URL || '';
+    const defaultApiUrl = process.env.NODE_ENV === "development"
+      ? ""
+      : "https://my-portfolio-82yx.onrender.com";
+    const baseUrl = process.env.REACT_APP_API_URL || defaultApiUrl;
     const pingUrl = baseUrl
       ? (baseUrl.endsWith('/api/contact') ? `${baseUrl}/ping` : `${baseUrl.replace(/\/$/, '')}/api/contact/ping`)
       : '/api/contact/ping';
@@ -32,7 +35,10 @@ function Contact() {
     setStatus(null);
 
     try {
-      const baseUrl = process.env.REACT_APP_API_URL || '';
+      const defaultApiUrl = process.env.NODE_ENV === "development"
+        ? ""
+        : "https://my-portfolio-82yx.onrender.com";
+      const baseUrl = process.env.REACT_APP_API_URL || defaultApiUrl;
       const url = baseUrl
         ? (baseUrl.endsWith('/api/contact') ? baseUrl : `${baseUrl.replace(/\/$/, '')}/api/contact`)
         : '/api/contact';

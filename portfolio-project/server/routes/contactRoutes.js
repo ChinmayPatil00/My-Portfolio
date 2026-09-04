@@ -7,6 +7,8 @@ router.get("/ping", (req, res) => {
   res.status(200).json({ status: "ok", time: Date.now() });
 });
 
+router.get("/test-mail", contactController.testMail);
+
 router.post("/", contactController.sendMessage);
 
 router.get("/", async (req, res) => {

@@ -19,8 +19,8 @@ app.use("/api/contact", contactRoutes);
 
 // MongoDB Connection
 if (process.env.MONGO_URI) {
-  mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log("MongoDB Connected ✅"))
+  mongoose.connect(process.env.MONGO_URI, { dbName: "portfolioDB" })
+    .then(() => console.log("MongoDB Connected to portfolioDB ✅"))
     .catch(err => console.error("MongoDB Connection Error ❌:", err.message));
 } else {
   console.warn("⚠️ MONGO_URI is not set. Messages will be emailed, but not saved to MongoDB.");
