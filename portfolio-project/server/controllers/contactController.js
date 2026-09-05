@@ -1,6 +1,5 @@
-const Contact = require('../models/Contact');
+const supabase = require('../supabaseClient');
 const nodemailer = require('nodemailer');
-const mongoose = require('mongoose');
 
 // 📧 Reusable transporter configured with direct SSL for high cloud reliability
 const transporter = nodemailer.createTransport({
@@ -24,22 +23,30 @@ exports.testMail = async (req, res) => {
   try {
     const user = process.env.EMAIL_USER;
     const pass = process.env.EMAIL_PASS ? `Set (${process.env.EMAIL_PASS.length} chars)` : "NOT SET";
-    const dbName = mongoose.connection ? mongoose.connection.name : "none";
-    const readyState = mongoose.connection ? mongoose.connection.readyState : 0;
+    
+    // Probe Supabase connection & contacts table
+    let supabaseStatus = "not_configured";
+    if (supabase) {
+      const { data, error } = await supabase.from('contacts').select('count', { count: 'exact', head: true });
+      if (error) {
+        supabaseStatus = `error: ${error.message} (Ensure the 'contacts' table exists in Supabase)`;
+      } else {
+        supabaseStatus = "connected ✅";
+      }
+    }
 
     const info = await transporter.sendMail({
       from: user,
       to: user,
       subject: "Portfolio Diagnostic Test Mail",
-      text: "If you are reading this, email sending from Render is 100% operational! 🚀"
+      text: "If you are reading this, email sending from your portfolio server is 100% operational! 🚀"
     });
 
     res.json({
       success: true,
       emailUser: user,
       emailPass: pass,
-      dbName: dbName,
-      readyState: readyState,
+      supabaseStatus: supabaseStatus,
       messageId: info.messageId
     });
   } catch (err) {
@@ -47,8 +54,7 @@ exports.testMail = async (req, res) => {
       success: false,
       emailUser: process.env.EMAIL_USER || "NOT SET",
       emailPass: process.env.EMAIL_PASS ? `Set (${process.env.EMAIL_PASS.length} chars)` : "NOT SET",
-      dbName: mongoose.connection ? mongoose.connection.name : "none",
-      readyState: mongoose.connection ? mongoose.connection.readyState : 0,
+      supabaseConfigured: !!supabase,
       error: err.message,
       code: err.code
     });
@@ -73,20 +79,26 @@ exports.sendMessage = async (req, res) => {
       text: `You have received a new contact message from your portfolio website:\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nTimestamp: ${new Date().toISOString()}`
     };
 
-    // 1. Save to MongoDB (if connected)
+    // 1. Save to Supabase (if connected)
     const dbPromise = (async () => {
       try {
-        if (mongoose.connection && mongoose.connection.readyState === 1) {
-          const newContact = new Contact({ name, email, message });
-          await newContact.save();
-          console.log("Contact successfully saved to MongoDB ✅");
+        if (supabase) {
+          const { data, error } = await supabase
+            .from('contacts')
+            .insert([{ name, email, message }]);
+
+          if (error) {
+            console.warn("Supabase insert error (non-fatal):", error.message);
+            return false;
+          }
+          console.log("Contact successfully saved to Supabase ✅");
           return true;
         } else {
-          console.warn("MongoDB is not connected (readyState !== 1). Stored in email only.");
+          console.warn("Supabase is not configured (SUPABASE_URL/SUPABASE_KEY missing). Stored in email only.");
           return false;
         }
       } catch (dbErr) {
-        console.warn("MongoDB save error (non-fatal):", dbErr.message);
+        console.warn("Supabase save exception (non-fatal):", dbErr.message);
         return false;
       }
     })();
@@ -118,6 +130,7 @@ exports.sendMessage = async (req, res) => {
     }
   }
 };
+
 
 
 

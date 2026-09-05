@@ -1,10 +1,8 @@
 require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
-
-
 const contactRoutes = require("./routes/contactRoutes");
+const supabase = require("./supabaseClient");
 
 const app = express();
 
@@ -17,13 +15,11 @@ app.use(express.json());
 // Routes
 app.use("/api/contact", contactRoutes);
 
-// MongoDB Connection
-if (process.env.MONGO_URI) {
-  mongoose.connect(process.env.MONGO_URI, { dbName: "portfolioDB" })
-    .then(() => console.log("MongoDB Connected to portfolioDB ✅"))
-    .catch(err => console.error("MongoDB Connection Error ❌:", err.message));
+// Supabase Status
+if (supabase) {
+  console.log("Database: Supabase configured ✅");
 } else {
-  console.warn("⚠️ MONGO_URI is not set. Messages will be emailed, but not saved to MongoDB.");
+  console.warn("⚠️ Database: Supabase not configured (SUPABASE_URL / SUPABASE_KEY missing).");
 }
 
 app.get("/", (req, res) => {
