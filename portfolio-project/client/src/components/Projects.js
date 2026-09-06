@@ -4,16 +4,16 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 function Projects() {
   const projects = [
     {
+      name: "SpaceForge 3D",
+      desc: "A browser-based 3D spatial CAD platform featuring 2D-to-3D architectural drafting, PBR material rendering, 3D printing slicing verification, and automated BOM cost estimation.",
+      github: "https://github.com/ChinmayPatil00/SpaceForge-3D",
+      demo: "https://space-forge-3-d.vercel.app/"
+    },
+    {
       name: "Auction Engine",
       desc: "Real-time MERN marketplace for creators featuring zero-latency WebSockets, AI automation, and a secure transaction ledger.",
       github: "https://github.com/ChinmayPatil00/CreatorFlow",
       demo: "https://auction-engine-pi.vercel.app/"
-    },
-    {
-      name: "NexusATS",
-      desc: "A job aggregator and Applicant Tracking System (ATS) designed to streamline the hiring and application process.",
-      github: "#",
-      demo: "https://nexus-ats-web.vercel.app/"
     },
     {
       name: "HoneyBot",
@@ -22,22 +22,22 @@ function Projects() {
       demo: "https://honey-bot.vercel.app/"
     },
     {
-      name: "TalentMatrix AI",
-      desc: "An AI-powered app that parses PDF resumes using the Gemini API to instantly generate skill gaps and a 3-month career roadmap.",
-      github: "#",
-      demo: "https://talentmatrix-ai.vercel.app/"
-    },
-    {
       name: "WanderX",
       desc: "An intelligent adventure discovery and precision trip-planning platform featuring AI budget matching, interactive Leaflet route maps, elevation profiles, and customizable day-by-day itineraries.",
       github: "https://github.com/ChinmayPatil00/CyberDash",
       demo: "https://cyber-dash-omega.vercel.app/"
     },
     {
-      name: "SpaceForge 3D",
-      desc: "A browser-based 3D spatial CAD platform featuring 2D-to-3D architectural drafting, PBR material rendering, 3D printing slicing verification, and automated BOM cost estimation.",
-      github: "https://github.com/ChinmayPatil00/SpaceForge-3D",
-      demo: "https://space-forge-3-d.vercel.app/"
+      name: "NexusATS",
+      desc: "A job aggregator and Applicant Tracking System (ATS) designed to streamline the hiring and application process.",
+      github: "#",
+      demo: "https://nexus-ats-web.vercel.app/"
+    },
+    {
+      name: "TalentMatrix AI",
+      desc: "An AI-powered app that parses PDF resumes using the Gemini API to instantly generate skill gaps and a 3-month career roadmap.",
+      github: "#",
+      demo: "https://talentmatrix-ai.vercel.app/"
     }
   ];
 
