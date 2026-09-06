@@ -28,10 +28,10 @@ function Projects() {
       demo: "https://talentmatrix-ai.vercel.app/"
     },
     {
-      name: "CyberDash",
-      desc: "A comprehensive cybersecurity dashboard showcasing network analytics, threat intelligence feeds, and real-time security alerts.",
-      github: "#",
-      demo: "#"
+      name: "WanderX",
+      desc: "An intelligent adventure discovery and precision trip-planning platform featuring AI budget matching, interactive Leaflet route maps, elevation profiles, and customizable day-by-day itineraries.",
+      github: "https://github.com/ChinmayPatil00/CyberDash",
+      demo: "https://cyber-dash-omega.vercel.app/"
     }
   ];
 
