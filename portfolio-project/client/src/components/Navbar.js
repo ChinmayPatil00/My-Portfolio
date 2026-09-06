@@ -49,8 +49,8 @@ function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <a href="#home" className="nav-logo" onClick={handleLinkClick}>
-          <h2>Chinmay<span style={{ color: 'var(--accent-color)' }}>.</span></h2>
+        <a href="#home" className="nav-logo" onClick={handleLinkClick} style={{ textDecoration: 'none', color: '#ffffff' }}>
+          <h2 style={{ color: '#ffffff', margin: 0 }}>Chinmay<span style={{ color: 'var(--accent-color)' }}>.</span></h2>
         </a>
 
         {/* Desktop Nav Links */}
