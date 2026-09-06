@@ -6,25 +6,26 @@ function Projects() {
     {
       name: "Auction Engine",
       desc: "Real-time MERN marketplace for creators featuring zero-latency WebSockets, AI automation, and a secure transaction ledger.",
-      github: "https://github.com/ChinmayPatil00/CreatorFlow"
+      github: "https://github.com/ChinmayPatil00/CreatorFlow",
+      demo: "https://auction-engine-pi.vercel.app/"
     },
     {
       name: "NexusATS",
       desc: "A job aggregator and Applicant Tracking System (ATS) designed to streamline the hiring and application process.",
       github: "#",
-      demo: "#"
+      demo: "https://nexus-ats-web.vercel.app/"
     },
     {
       name: "HoneyBot",
       desc: "A decoupled, cloud-based threat intelligence system that uses a decoy SSH server to intercept cyberattacks, capture malicious credentials, and visualize hacker origins in real-time on a global map.",
       github: "#",
-      demo: "#"
+      demo: "https://honey-bot.vercel.app/"
     },
     {
       name: "TalentMatrix AI",
       desc: "An AI-powered app that parses PDF resumes using the Gemini API to instantly generate skill gaps and a 3-month career roadmap.",
       github: "#",
-      demo: "#"
+      demo: "https://talentmatrix-ai.vercel.app/"
     },
     {
       name: "CyberDash",
@@ -59,7 +60,14 @@ function Projects() {
             <h3 style={{color: '#fff', marginBottom: '10px'}}>{p.name}</h3>
             <p style={{flexGrow: 1}}>{p.desc}</p>
             <div style={{marginTop: 'auto', paddingTop: '20px', display: 'flex', gap: '15px'}}>
-              <a href={p.github} target="_blank" rel="noreferrer" className="card-link" style={{color: 'var(--accent-color)', display: 'flex', alignItems: 'center', gap: '5px', textDecoration: 'none'}}>
+              <a 
+                href={p.github} 
+                onClick={(e) => { if(p.github === "#") { e.preventDefault(); alert("GitHub code repository coming soon!"); } }} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="card-link" 
+                style={{color: 'var(--accent-color)', display: 'flex', alignItems: 'center', gap: '5px', textDecoration: 'none'}}
+              >
                 <FaGithub /> Code
               </a>
               {p.demo && (
