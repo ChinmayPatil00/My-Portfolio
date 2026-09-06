@@ -32,6 +32,12 @@ function Projects() {
       desc: "An intelligent adventure discovery and precision trip-planning platform featuring AI budget matching, interactive Leaflet route maps, elevation profiles, and customizable day-by-day itineraries.",
       github: "https://github.com/ChinmayPatil00/CyberDash",
       demo: "https://cyber-dash-omega.vercel.app/"
+    },
+    {
+      name: "SpaceForge 3D",
+      desc: "A browser-based 3D spatial CAD platform featuring 2D-to-3D architectural drafting, PBR material rendering, 3D printing slicing verification, and automated BOM cost estimation.",
+      github: "https://github.com/ChinmayPatil00/SpaceForge-3D",
+      demo: "https://space-forge-3-d.vercel.app/"
     }
   ];
 
